@@ -1,7 +1,7 @@
 # ProjectD
 Game like TopDowm shooter and Dungeon
 
-> *Developed on Unity 2018.2.0f2*
+> *Developed on Unity 2018.2.6f1*
 
 - - -
 

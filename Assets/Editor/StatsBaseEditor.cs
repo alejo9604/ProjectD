@@ -4,30 +4,66 @@ using UnityEngine;
 [CustomEditor(typeof(StatsBase), true)]
 public class StatsBaseEditor : Editor
 {
+
+
+
+
     public override void OnInspectorGUI()
     {
         //base.OnInspectorGUI();
 
+
         GUILayout.Space(10);
         GUIStyle richTextStyle = new GUIStyle();
         richTextStyle.richText = true;
-
-        StatsBase SB = target as StatsBase;
+        StatsBase SB = (StatsBase)target;
 
         GUILayout.Label("General", EditorStyles.boldLabel);
 
-        SB.health = EditorGUILayout.IntField("Puntos de vida", SB.health);
-        SB.armor = EditorGUILayout.IntField("Armadura", SB.armor);
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Puntos de vida", GUILayout.Width(100));
+        SB.health = EditorGUILayout.IntSlider(SB.health, 0, serializedObject.FindProperty("maxHealthPoints").intValue);
+        EditorGUILayout.EndHorizontal();
+
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Armadura", GUILayout.Width(100));
+        SB.armor = EditorGUILayout.IntSlider(SB.armor, 0, serializedObject.FindProperty("maxArmorPoints").intValue);
+        EditorGUILayout.EndHorizontal();
+
 
         GUILayout.Space(10);
         GUILayout.Label("FIDVAR", EditorStyles.boldLabel);
 
-        SB.strength = EditorGUILayout.IntField("Fuerza", SB.strength);
-        SB.intelligence = EditorGUILayout.IntField("Inteligencia", SB.intelligence);
-        SB.dexterity = EditorGUILayout.IntField("Destreza", SB.dexterity);
-        SB.versatility = EditorGUILayout.IntField("Versatilidad", SB.versatility);
-        SB.cunnning = EditorGUILayout.IntField("Astucia", SB.cunnning);
-        SB.resistance = EditorGUILayout.IntField("Resistencia", SB.resistance);
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Fuerza", GUILayout.Width(100));
+        SB.strength = EditorGUILayout.IntSlider(SB.strength, 0, serializedObject.FindProperty("maxStatsPoints").intValue);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Inteligencia", GUILayout.Width(100));
+        SB.intelligence = EditorGUILayout.IntSlider(SB.intelligence, 0, serializedObject.FindProperty("maxStatsPoints").intValue);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Destreza", GUILayout.Width(100));
+        SB.dexterity = EditorGUILayout.IntSlider(SB.dexterity, 0, serializedObject.FindProperty("maxStatsPoints").intValue);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Versatilidad", GUILayout.Width(100));
+        SB.versatility = EditorGUILayout.IntSlider(SB.versatility, 0, serializedObject.FindProperty("maxStatsPoints").intValue);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Astucia", GUILayout.Width(100));
+        SB.cunnning = EditorGUILayout.IntSlider(SB.cunnning, 0, serializedObject.FindProperty("maxStatsPoints").intValue);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Resistencia", GUILayout.Width(100));
+        SB.resistance = EditorGUILayout.IntSlider(SB.resistance, 0, serializedObject.FindProperty("maxStatsPoints").intValue);
+        EditorGUILayout.EndHorizontal();
 
         GUILayout.Space(10);
         GUILayout.Label("Habilidades", EditorStyles.boldLabel);

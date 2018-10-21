@@ -4,27 +4,51 @@
 public class StatsBase : MonoBehaviour
 {
     #region PRIVATE_FIELDS
+    [SerializeField]
+    private int maxStatsPoints = 15;
+    [SerializeField]
+    private int maxArmorPoints = 100;
+    [SerializeField]
+    private int maxHealthPoints = 150;
 
-    private int baseHealth = 50; //Vida
-    private int baseArmor = 20; // Armadura
+
+    [SerializeField]
+    private int baseHealth; //Vida
+    [SerializeField]
+    private int baseArmor; // Armadura
+    [SerializeField]
     private int baseStrength; //Fuerza
+    [SerializeField]
     private int baseIntelligence; //Inteligencia
+    [SerializeField]
     private int baseDexterity; //Destreza
+    [SerializeField]
     private int baseVersatility; //Versatilidad
+    [SerializeField]
     private int baseCunning; //Astucia
+    [SerializeField]
     private int baseResistance; //Resistencia
 
-    private int baseInventoryCapacity; //Capacidad de inventario
-    private int baseMeleeDamage; //Daño cuerpo a cuerpo
-    private int baseStamina; //Stamina
-    private float baseAccuracy; //Punteria
-    private float baseSpeed; //Velocidad de movimiento
-    private float baseCritic; //Probabilidad de Golpe critico
-    private float baseBonusResources; //Probabilidad de bonus en recursos
+    [SerializeField]
+    private int baseInventoryCapacity = 5; //Capacidad de inventario
+    [SerializeField]
+    private int baseMeleeDamage = 3; //Daño cuerpo a cuerpo
+    [SerializeField]
+    private int baseStamina = 15; //Stamina
+    [SerializeField]
+    private float baseAccuracy = 1f; //Punteria
+    [SerializeField]
+    private float baseSpeed = 5f; //Velocidad de movimiento
+    [SerializeField]
+    private float baseCritic = 1f; //Probabilidad de Golpe critico
+    [SerializeField]
+    private float baseBonusResources = 1f; //Probabilidad de bonus en recursos
 
     #endregion PRIVATE_FIELDS
 
     #region PUBLIC_FIELDS
+
+
 
     public int health
     {
@@ -34,7 +58,7 @@ public class StatsBase : MonoBehaviour
         }
         set
         {
-            baseHealth = value;
+            baseHealth = (value > maxHealthPoints) ? maxHealthPoints : value; ;
         }
     }
 
@@ -46,7 +70,7 @@ public class StatsBase : MonoBehaviour
         }
         set
         {
-            baseArmor = value;
+            baseArmor = (value > maxArmorPoints) ? maxArmorPoints : value;
         }
     }
 
@@ -58,7 +82,7 @@ public class StatsBase : MonoBehaviour
         }
         set
         {
-            baseStrength = value;
+            baseStrength = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
 
@@ -70,7 +94,7 @@ public class StatsBase : MonoBehaviour
         }
         set
         {
-            baseIntelligence = value;
+            baseIntelligence = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
 
@@ -82,7 +106,7 @@ public class StatsBase : MonoBehaviour
         }
         set
         {
-            baseDexterity = value;
+            baseDexterity = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
 
@@ -94,7 +118,7 @@ public class StatsBase : MonoBehaviour
         }
         set
         {
-            baseVersatility = value;
+            baseVersatility = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
 
@@ -106,7 +130,7 @@ public class StatsBase : MonoBehaviour
         }
         set
         {
-            baseCunning = value;
+            baseCunning = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
 
@@ -118,7 +142,7 @@ public class StatsBase : MonoBehaviour
         }
         set
         {
-            baseResistance = value;
+            baseResistance = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
 
@@ -158,7 +182,8 @@ public class StatsBase : MonoBehaviour
     {
         get
         {
-            return baseSpeed + (int)Mathf.CeilToInt((baseDexterity + baseVersatility) / 2);
+            float val = baseSpeed + ((baseDexterity + baseVersatility) / 6f);
+            return (float)System.Math.Round(val, 2);
         }
     }
 
@@ -182,17 +207,6 @@ public class StatsBase : MonoBehaviour
 
     #region PUBLIC_FUNCTIONS
 
-    [ContextMenu("Set Values")]
-    public void SetBaseValues()
-    {
-        baseInventoryCapacity = 5;
-        baseMeleeDamage = 5;
-        baseStamina = 10;
-        baseAccuracy = 5;
-        baseSpeed = 5;
-        baseCritic = 3;
-        baseBonusResources = 0;
-    }
 
     #endregion PUBLIC_FUNCTIONS
 }
