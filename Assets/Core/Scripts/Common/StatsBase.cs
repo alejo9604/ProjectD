@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-[ExecuteInEditMode]
 public class StatsBase : MonoBehaviour
 {
     #region PRIVATE_FIELDS
@@ -10,7 +9,6 @@ public class StatsBase : MonoBehaviour
     private int maxArmorPoints = 100;
     [SerializeField]
     private int maxHealthPoints = 150;
-
 
     [SerializeField]
     private int baseHealth; //Vida
@@ -48,8 +46,7 @@ public class StatsBase : MonoBehaviour
 
     #region PUBLIC_FIELDS
 
-
-
+    [SerializeField]
     public int health
     {
         get
@@ -61,7 +58,7 @@ public class StatsBase : MonoBehaviour
             baseHealth = (value > maxHealthPoints) ? maxHealthPoints : value; ;
         }
     }
-
+    [SerializeField]
     public int armor
     {
         get
@@ -73,7 +70,7 @@ public class StatsBase : MonoBehaviour
             baseArmor = (value > maxArmorPoints) ? maxArmorPoints : value;
         }
     }
-
+    [SerializeField]
     public int strength
     {
         get
@@ -85,7 +82,7 @@ public class StatsBase : MonoBehaviour
             baseStrength = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-
+    [SerializeField]
     public int intelligence
     {
         get
@@ -97,7 +94,7 @@ public class StatsBase : MonoBehaviour
             baseIntelligence = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-
+    [SerializeField]
     public int dexterity
     {
         get
@@ -109,7 +106,7 @@ public class StatsBase : MonoBehaviour
             baseDexterity = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-
+    [SerializeField]
     public int versatility
     {
         get
@@ -121,7 +118,7 @@ public class StatsBase : MonoBehaviour
             baseVersatility = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-
+    [SerializeField]
     public int cunnning
     {
         get
@@ -133,7 +130,7 @@ public class StatsBase : MonoBehaviour
             baseCunning = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-
+    [SerializeField]
     public int resistance
     {
         get
@@ -145,7 +142,7 @@ public class StatsBase : MonoBehaviour
             baseResistance = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-
+    [SerializeField]
     public int invCapacity
     {
         get
@@ -153,7 +150,7 @@ public class StatsBase : MonoBehaviour
             return baseInventoryCapacity + (int)Mathf.CeilToInt((baseStrength + baseResistance) / 2);
         }
     }
-
+    [SerializeField]
     public int meleeDamage
     {
         get
@@ -161,7 +158,7 @@ public class StatsBase : MonoBehaviour
             return baseMeleeDamage + (int)Mathf.CeilToInt(baseStrength / 2);
         }
     }
-
+    [SerializeField]
     public int stamina
     {
         get
@@ -169,7 +166,7 @@ public class StatsBase : MonoBehaviour
             return baseStamina + (int)Mathf.CeilToInt(resistance / 2);
         }
     }
-
+    [SerializeField]
     public float accuracy
     {
         get
@@ -177,7 +174,7 @@ public class StatsBase : MonoBehaviour
             return baseAccuracy + (int)Mathf.CeilToInt((baseDexterity + baseCunning) / 2);
         }
     }
-
+    [SerializeField]
     public float speed
     {
         get
@@ -186,7 +183,7 @@ public class StatsBase : MonoBehaviour
             return (float)System.Math.Round(val, 2);
         }
     }
-
+    [SerializeField]
     public float critic
     {
         get
@@ -194,7 +191,7 @@ public class StatsBase : MonoBehaviour
             return baseCritic + (int)Mathf.CeilToInt((intelligence + baseVersatility) / 2);
         }
     }
-
+    [SerializeField]
     public float bonusResources
     {
         get
