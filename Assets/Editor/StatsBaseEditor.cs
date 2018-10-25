@@ -57,7 +57,7 @@ public class StatsBaseEditor : Editor
 
         EditorGUILayout.BeginHorizontal();
         GUILayout.Label("Astucia", GUILayout.Width(100));
-        SB.cunnning = EditorGUILayout.IntSlider(SB.cunnning, 0, serializedObject.FindProperty("maxStatsPoints").intValue);
+        SB.cunning = EditorGUILayout.IntSlider(SB.cunning, 0, serializedObject.FindProperty("maxStatsPoints").intValue);
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();

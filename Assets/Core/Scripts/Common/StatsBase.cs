@@ -15,17 +15,7 @@ public class StatsBase : MonoBehaviour
     [SerializeField]
     private int baseArmor; // Armadura
     [SerializeField]
-    private int baseStrength; //Fuerza
-    [SerializeField]
-    private int baseIntelligence; //Inteligencia
-    [SerializeField]
-    private int baseDexterity; //Destreza
-    [SerializeField]
-    private int baseVersatility; //Versatilidad
-    [SerializeField]
-    private int baseCunning; //Astucia
-    [SerializeField]
-    private int baseResistance; //Resistencia
+    private Fidvar fidvar;
 
     [SerializeField]
     private int baseInventoryCapacity = 5; //Capacidad de inventario
@@ -46,7 +36,6 @@ public class StatsBase : MonoBehaviour
 
     #region PUBLIC_FIELDS
 
-    [SerializeField]
     public int health
     {
         get
@@ -58,7 +47,6 @@ public class StatsBase : MonoBehaviour
             baseHealth = (value > maxHealthPoints) ? maxHealthPoints : value; ;
         }
     }
-    [SerializeField]
     public int armor
     {
         get
@@ -70,95 +58,89 @@ public class StatsBase : MonoBehaviour
             baseArmor = (value > maxArmorPoints) ? maxArmorPoints : value;
         }
     }
-    [SerializeField]
+
     public int strength
     {
         get
         {
-            return baseStrength;
+            return fidvar.Strength;
         }
         set
         {
-            baseStrength = (value > maxStatsPoints) ? maxStatsPoints : value;
+            fidvar.Strength = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-    [SerializeField]
     public int intelligence
     {
         get
         {
-            return baseIntelligence;
+            return fidvar.Intelligence;
         }
         set
         {
-            baseIntelligence = (value > maxStatsPoints) ? maxStatsPoints : value;
+            fidvar.Intelligence = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-    [SerializeField]
     public int dexterity
     {
         get
         {
-            return baseDexterity;
+            return fidvar.Dexterity;
         }
         set
         {
-            baseDexterity = (value > maxStatsPoints) ? maxStatsPoints : value;
+            fidvar.Dexterity = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-    [SerializeField]
     public int versatility
     {
         get
         {
-            return baseVersatility;
+            return fidvar.Versatility;
         }
         set
         {
-            baseVersatility = (value > maxStatsPoints) ? maxStatsPoints : value;
+            fidvar.Versatility  = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-    [SerializeField]
-    public int cunnning
+    public int cunning
     {
         get
         {
-            return baseCunning;
+            return fidvar.Cunning;
         }
         set
         {
-            baseCunning = (value > maxStatsPoints) ? maxStatsPoints : value;
+            fidvar.Cunning = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-    [SerializeField]
     public int resistance
     {
         get
         {
-            return baseResistance;
+            return fidvar.Resistance;
         }
         set
         {
-            baseResistance = (value > maxStatsPoints) ? maxStatsPoints : value;
+            fidvar.Resistance = (value > maxStatsPoints) ? maxStatsPoints : value;
         }
     }
-    [SerializeField]
+
+
     public int invCapacity
     {
         get
         {
-            return baseInventoryCapacity + (int)Mathf.CeilToInt((baseStrength + baseResistance) / 2);
+            return baseInventoryCapacity + (int)Mathf.CeilToInt((strength + resistance) / 2);
         }
     }
-    [SerializeField]
     public int meleeDamage
     {
         get
         {
-            return baseMeleeDamage + (int)Mathf.CeilToInt(baseStrength / 2);
+            return baseMeleeDamage + (int)Mathf.CeilToInt(strength / 2);
         }
     }
-    [SerializeField]
     public int stamina
     {
         get
@@ -166,37 +148,33 @@ public class StatsBase : MonoBehaviour
             return baseStamina + (int)Mathf.CeilToInt(resistance / 2);
         }
     }
-    [SerializeField]
     public float accuracy
     {
         get
         {
-            return baseAccuracy + (int)Mathf.CeilToInt((baseDexterity + baseCunning) / 2);
+            return baseAccuracy + (int)Mathf.CeilToInt((dexterity + cunning) / 2);
         }
     }
-    [SerializeField]
     public float speed
     {
         get
         {
-            float val = baseSpeed + ((baseDexterity + baseVersatility) / 6f);
+            float val = baseSpeed + ((dexterity + versatility) / 6f);
             return (float)System.Math.Round(val, 2);
         }
     }
-    [SerializeField]
     public float critic
     {
         get
         {
-            return baseCritic + (int)Mathf.CeilToInt((intelligence + baseVersatility) / 2);
+            return baseCritic + (int)Mathf.CeilToInt((intelligence + versatility) / 2);
         }
     }
-    [SerializeField]
     public float bonusResources
     {
         get
         {
-            return baseBonusResources + (int)Mathf.CeilToInt((baseIntelligence + baseCunning) / 2);
+            return baseBonusResources + (int)Mathf.CeilToInt((intelligence + cunning) / 2);
         }
     }
 
