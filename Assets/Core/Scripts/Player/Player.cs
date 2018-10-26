@@ -11,10 +11,10 @@ public class Player : StatsBase
     private PlayerController controller;
     private GunController gunController;
 
+    private GunBase gunToEquip;
     #endregion
 
-    #region PRIVATE_FUNCTIONS
-
+    #region UNITY_FUNCTIONS
     private void Awake()
     {
         viewCamera = Camera.main;
@@ -41,10 +41,61 @@ public class Player : StatsBase
 
         }
 
+
+        // Weapon input
+        if (Input.GetMouseButton(0))
+        {
+            gunController.OnTriggerHold();
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            gunController.OnTriggerRelease();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TryToEquipGun();
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Gun to equip
+        if (other.tag == "Gun" && other.GetComponent<GunBase>() != null)
+        {
+            gunToEquip = other.GetComponent<GunBase>();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Gun" && other.GetComponent<GunBase>() != null && gunToEquip == other.GetComponent<GunBase>())
+        {
+            gunToEquip = null;
+        }
+    }
+    #endregion
+
+
+    #region PRIVATE_FUNCTIONS
+
+    private void TryToEquipGun()
+    {
+        if (gunToEquip == null)
+            return;
+        if (gunToEquip.CanGrabIt(Fidvar))
+        {
+            GunBase nextGunToEquip = gunController.EquippedGun;
+            gunController.EquipGun(gunToEquip);
+            gunToEquip = nextGunToEquip;
+        }
+        else
+        {
+            Debug.Log("Not enough FIDVAR");
+        }
     }
 
 
     #endregion
-
 
 }

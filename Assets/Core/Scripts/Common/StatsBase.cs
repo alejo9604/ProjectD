@@ -59,6 +59,13 @@ public class StatsBase : MonoBehaviour
         }
     }
 
+    public Fidvar Fidvar
+    {
+        get
+        {
+            return fidvar;
+        }
+    }
     public int strength
     {
         get

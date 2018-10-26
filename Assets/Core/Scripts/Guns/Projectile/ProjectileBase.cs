@@ -4,13 +4,32 @@ using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+
+    #region PRIVATE_FIELDS
+    [SerializeField]
+    private float lifetime = 3f;
+    [SerializeField]
+    private float speed = 10f;
+    #endregion PRIVATE_FIELDS
+
+    #region UNITY_FUNCTIONS
+    void Start () {
+        Destroy(gameObject, lifetime);
+    }
 	
-	// Update is called once per frame
+	
 	void Update () {
-		
-	}
+        float moveDistance = speed * Time.deltaTime;
+        CheckCollision();
+        transform.Translate(Vector3.forward * moveDistance);
+    }
+    #endregion UNITY_FUNCTIONS
+
+
+    #region PRIVATE_FUNCTIONS
+    void CheckCollision()
+    {
+
+    }
+    #endregion PRIVATE_FUNCTIONS
 }
