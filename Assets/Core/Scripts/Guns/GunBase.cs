@@ -8,9 +8,9 @@ public class GunBase : WeaponBase {
     #region PRIVATE_FIELDS
     [Space(20)]
     [SerializeField]
-    public Transform[] projectileSpawn;
+    private Transform[] projectileSpawn;
     [SerializeField]
-    public ProjectileBase projectile;
+    private ProjectileBase projectile;
 
     [SerializeField]
     private float msBetweenShots = 100;
